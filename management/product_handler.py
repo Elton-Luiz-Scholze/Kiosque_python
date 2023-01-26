@@ -17,3 +17,25 @@ def get_products_by_type(type: str):
             products_list.append(product)
 
     return products_list
+
+
+def add_product(products, **kwargs):
+    if len(products) == 0:
+        kwargs["_id"] = 1
+
+        products.append(kwargs)
+
+        return kwargs
+
+    all_id = []
+
+    for product in products:
+        all_id.append(product["_id"])
+
+    id = sorted(all_id)[-1]
+
+    if len(products) > 0:
+        kwargs["_id"] = id + 1
+        products.append(kwargs)
+
+        return kwargs
