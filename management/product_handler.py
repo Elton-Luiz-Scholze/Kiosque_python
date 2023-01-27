@@ -12,11 +12,14 @@ def get_product_by_id(id: int):
     return {}
 
 
-def get_products_by_type(type: str):
+def get_products_by_type(type_product: str):
+    if type(type_product) is not str:
+        raise TypeError("product type must be a str")
+
     products_list = []
 
     for product in products:
-        if product["type"] == type:
+        if product["type"] == type_product:
             products_list.append(product)
 
     return products_list
@@ -45,8 +48,4 @@ def add_product(products, **kwargs):
 
 
 def menu_report():
-    ...
-
-
-def add_product_extra():
     ...
