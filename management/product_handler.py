@@ -2,11 +2,14 @@ from menu import products
 
 
 def get_product_by_id(id: int):
+    if type(id) is not int:
+        raise TypeError("product id must be an int")
+
     for product in products:
         if product["_id"] == id:
             return product
-    else:
-        return {}
+
+    return {}
 
 
 def get_products_by_type(type: str):
@@ -39,3 +42,11 @@ def add_product(products, **kwargs):
         products.append(kwargs)
 
         return kwargs
+
+
+def menu_report():
+    ...
+
+
+def add_product_extra():
+    ...
