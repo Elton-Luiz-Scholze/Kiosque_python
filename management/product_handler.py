@@ -48,4 +48,24 @@ def add_product(products, **kwargs):
 
 
 def menu_report():
-    ...
+    products_count = len(products)
+    prices = 0
+    types = []
+    count_types = dict({})
+    counter = 0
+    most_common_type = ""
+
+    for value in products:
+        prices += value["price"]
+        types.append(value["type"])
+
+    for count_types in types:
+        counted_type = types.count(count_types)
+
+        if counted_type > counter:
+            counter = counted_type
+            most_common_type = count_types
+
+    average_price = round((prices / products_count), 2)
+
+    return f"Products Count: {products_count} - Average Price: ${average_price} - Most Common Type: {most_common_type}"
